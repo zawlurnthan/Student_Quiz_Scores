@@ -3,17 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Main;
+package dao;
 
-import controller.Controller;
+import dto.Student;
+import java.util.List;
 
 /**
  *
  * @author Zaw L Than
  */
-public class App {
-    public static void main(String[] args) {
-        Controller controller = new Controller();
-        controller.run();
-    }   
+public interface GradesDao {
+    
 }
