@@ -6,6 +6,7 @@
 package view;
 
 import dto.Student;
+import java.util.List;
 
 /**
  *
@@ -25,17 +26,38 @@ public class Grades_View {
         return io.readInt("Please select from the above choices.", 1, 6);
     }
     
-        public Student getNewStudentInfo() {
+    public void displayStudentList(List<Student> students) {
+        for (Student current : students) {
+            String info = String.format("#%s : %s %s", 
+                    current.getId(),
+                    current.getFirstName(),
+                    current.getLastName(),
+                    current.getScore());
+            io.print(info);
+        }
+        io.readString("Please hit enter to continue.");
+    }
+    
+    public Student getNewStudentInfo() {
         String id = io.readString("Please enter student ID");
         String firstName = io.readString("Please enter First Name");
         String lastName = io.readString("Please enter Last Name");
-        int score = io.readInt("Please enter the quiz score");
+        String score = io.readString("Please enter the quiz score");
         
         Student student = new Student(id);
         student.setFirstName(firstName);
         student.setLastName(lastName);
         student.setScore(score);
         return student;
+    }
+        
+    public void removeStudent(Student student) {
+        if (student != null) {
+            io.print("Student successfully removed.");
+        } else {
+            io.print("No such student.");
+        }
+        io.readString("Please hit enter to continue.");
     }
         
     public void displayAllStudentsBanner() {

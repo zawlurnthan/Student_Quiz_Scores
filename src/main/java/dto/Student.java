@@ -13,7 +13,7 @@ public class Student {
     private String id;
     private String firstName;
     private String lastName;
-    private int score;
+    private String score;
 
     public Student(String id) {
         this.id = id;
@@ -39,11 +39,11 @@ public class Student {
         this.lastName = lastName;
     }
 
-    public int getScore() {
+    public String getScore() {
         return score;
     }
 
-    public void setScore(int score) {
+    public void setScore(String score) {
         this.score = score;
     }  
 }

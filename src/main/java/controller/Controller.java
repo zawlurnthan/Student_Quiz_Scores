@@ -5,6 +5,9 @@
  */
 package controller;
 
+import dao.GradesDao;
+import dao.GradesDaoImpl;
+import dto.Student;
 import view.Grades_View;
 
 /**
@@ -13,12 +16,13 @@ import view.Grades_View;
  */
 public class Controller {
     Grades_View view = new Grades_View();
+    GradesDao dao = new GradesDaoImpl();
     
     public void run() {
         boolean keepGoing = true;
 
         while (keepGoing) {
-            int menuSelection = view.printMenuAndGetSelection();
+            int menuSelection = getMenuSelection();
             
             switch (menuSelection) {
                 case 1:
@@ -26,7 +30,7 @@ public class Controller {
                     break;
 
                 case 2:
-                    view.displayStudentBanner();
+                    createStudent();
                     break;
 
                 case 3:
@@ -42,12 +46,23 @@ public class Controller {
                     break;
 
                 case 6:
-                    view.displayExitBanner();
+                    keepGoing = false;
                     break;
 
                 default:
                     System.out.println("Unknow Command!!!");
             } 
-        }     
+        }                      
+        view.displayExitBanner();   
+    }
+    
+    private int getMenuSelection() {
+        return view.printMenuAndGetSelection();
+    }
+    
+    private void createStudent() {
+        view.displayStudentBanner();
+        Student newStudent = view.getNewStudentInfo();
+        dao.addStudent(newStudent.getId(), newStudent);
     }
 }

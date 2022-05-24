@@ -13,5 +13,9 @@ import java.util.List;
  * @author Zaw L Than
  */
 public interface GradesDao {
-    
+    Student addStudent(String id, Student student);
+    List<Student> getAllStudents();
+    Student removeStudent(String id);
+    int getStudentScore(String id);
+    int getAverageScore(String id);  
 }
